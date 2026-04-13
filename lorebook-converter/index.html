@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorebook Converter</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="title">Lorebook Converter</div>
+  <div class="subtitle">JanitorAI → SillyTavern Format</div>
+  <div class="tag">v3.0 · ST Compatible</div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <div class="card-label"><span class="step">01</span> Paste your JSON</div>
+    <textarea
+      class="paste-area"
+      id="pasteArea"
+      placeholder='Paste your JanitorAI lorebook JSON here...&#10;&#10;Expected format: [ { "key": [...], "content": "...", ... }, ... ]'
+      spellcheck="false"
+    ></textarea>
+    <div class="paste-footer">
+      <div class="entry-count"><span id="entryCountNum">0</span> entries detected</div>
+      <button class="clear-btn" id="clearBtn">Clear</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label"><span class="step">02</span> Options</div>
+    <div class="options-grid">
+      <div class="option active" data-opt="matchWholeWords">
+        <div class="option-check"></div>
+        <div>
+          <div class="option-text">Match Whole Words</div>
+          <div class="option-desc">Only trigger on exact words, not partial matches</div>
+        </div>
+      </div>
+      <div class="option active" data-opt="preserveDisabled">
+        <div class="option-check"></div>
+        <div>
+          <div class="option-text">Preserve Disabled</div>
+          <div class="option-desc">Include entries that were turned off in JanitorAI</div>
+        </div>
+      </div>
+      <div class="option active" data-opt="autoSelective">
+        <div class="option-check"></div>
+        <div>
+          <div class="option-text">Auto Selective</div>
+          <div class="option-desc">Require both primary and secondary keys to trigger</div>
+        </div>
+      </div>
+      <div class="option active" data-opt="useProbability">
+        <div class="option-check"></div>
+        <div>
+          <div class="option-text">Use Probability</div>
+          <div class="option-desc">Respect each entry's probability setting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label"><span class="step">03</span> Export</div>
+    <div class="filename-row">
+      <span class="filename-label">filename</span>
+      <input class="filename-input" id="filenameInput" type="text" value="lorebook_sillytavern" spellcheck="false">
+      <span class="filename-ext">.json</span>
+    </div>
+    <button class="convert-btn" id="convertBtn" disabled>Convert &amp; Download</button>
+    <div class="log" id="log"></div>
+    <button class="download-btn" id="downloadBtn">⬇ Download Again</button>
+  </div>
+
+</div>
+
+<div class="footer">Lorebook Converter · JanitorAI → SillyTavern · paste JSON to begin</div>
+
+<script src="converter.js"></script>
+</body>
+</html>
