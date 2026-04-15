@@ -35,7 +35,7 @@
       <button class="tab-btn" onclick="go('themes',this)">Themes</button>
       <button class="tab-btn" onclick="go('extensions',this)">Extensions</button>
       <button class="tab-btn" onclick="go('cards',this)">Cards</button>
-      <a class="tab-btn" href="https://ravenrevenge.github.io/lorebook-converter" target="_blank">Lorebook Converter</a>
+      <button class="tab-btn" onclick="go('lorebook',this)">Lorebook Converter</button>
       <button class="tab-btn" onclick="go('credits',this)">Credits</button>
     </div>
     <select class="tab-select" onchange="goSelect(this)" aria-label="Navigation">
@@ -43,6 +43,7 @@
       <option value="themes">Themes</option>
       <option value="extensions">Extensions</option>
       <option value="cards">Cards</option>
+      <option value="lorebook">Lorebook Converter</option>
       <option value="credits">Credits</option>
     </select>
 
@@ -131,6 +132,81 @@
     <div class="tab-panel" id="p-cards">
       <div class="sh"><h2>Cards</h2><div class="sh-line"></div></div>
       <div class="soon"><span>💀</span>coming soon.</div>
+    </div>
+
+    <!-- LOREBOOK CONVERTER -->
+    <div class="tab-panel" id="p-lorebook">
+      <div class="sh"><h2>Lorebook Converter</h2><div class="sh-line"></div></div>
+      <div class="lorebook-body">
+        <div class="lorebook">
+          <div class="title">Lorebook Converter</div>
+          <div class="subtitle">JanitorAI → SillyTavern Format</div>
+          <div class="tag">v1.0 · ST Compatible</div>
+        </div>
+
+      <div class="container">
+        <div class="card-lorebook">
+          <div class="card-label-lorebook"><span class="step">01</span> Paste your JSON</div>
+          <textarea
+            class="paste-area"
+            id="pasteArea"
+            placeholder='Paste your JanitorAI lorebook JSON here...&#10;&#10;Expected format: [ { "key": [...], "content": "...", ... }, ... ]'
+            spellcheck="false"
+          ></textarea>
+          <div class="paste-footer">
+            <div class="entry-count"><span id="entryCountNum">0</span> entries detected</div>
+            <button class="clear-btn" id="clearBtn">Clear</button>
+          </div>
+        </div>
+
+        <div class="card-lorebook">
+          <div class="card-label-lorebook"><span class="step">02</span> Options</div>
+          <div class="options-grid">
+            <div class="option active" data-opt="matchWholeWords">
+              <div class="option-check"></div>
+              <div>
+                <div class="option-text">Match Whole Words</div>
+                <div class="option-desc">Only trigger on exact words, not partial matches</div>
+              </div>
+            </div>
+            <div class="option active" data-opt="preserveDisabled">
+              <div class="option-check"></div>
+              <div>
+                <div class="option-text">Preserve Disabled</div>
+                <div class="option-desc">Include entries that were turned off in JanitorAI</div>
+              </div>
+            </div>
+            <div class="option active" data-opt="autoSelective">
+              <div class="option-check"></div>
+              <div>
+                <div class="option-text">Auto Selective</div>
+                <div class="option-desc">Require both primary and secondary keys to trigger</div>
+              </div>
+            </div>
+            <div class="option active" data-opt="useProbability">
+              <div class="option-check"></div>
+              <div>
+                <div class="option-text">Use Probability</div>
+                <div class="option-desc">Respect each entry's probability setting</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-lorebook">
+          <div class="card-label-lorebook"><span class="step">03</span> Export</div>
+          <div class="filename-row">
+            <span class="filename-label">filename</span>
+            <input class="filename-input" id="filenameInput" type="text" value="lorebook_sillytavern" spellcheck="false">
+            <span class="filename-ext">.json</span>
+          </div>
+          <button class="convert-btn" id="convertBtn" disabled>Convert &amp; Download</button>
+          <div class="log" id="log"></div>
+          <button class="download-btn" id="downloadBtn">⬇ Download Again</button>
+        </div>
+      </div>
+      <div class="footer">Lorebook Converter · JanitorAI → SillyTavern · paste JSON to begin</div>
+      <script src="converter.js"></script>
+      </div>
     </div>
 
     <!-- CREDITS -->
