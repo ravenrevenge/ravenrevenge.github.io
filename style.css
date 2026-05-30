@@ -52,7 +52,7 @@ body{font-family:'Roboto',sans-serif;color:var(--text);overflow-x:hidden;}
 .banner-title{
   position:relative;z-index:2;
   font-family:'Nightcore',sans-serif;
-  font-size:clamp(3rem,10vw,6rem);
+  font-size:clamp(2.8rem,10vw,6rem);
   color:#8b6aad;
   pointer-events:none;
   letter-spacing:2px;
